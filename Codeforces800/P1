@@ -1,0 +1,25 @@
+https://codeforces.com/contest/1903/problem/A
+
+static boolean isSorted(ArrayList<Integer> arr){
+        for (int i=1;i<arr.size();i++)
+        {
+            if(arr.get(i) < arr.get(i - 1)) return false;
+        }
+        return true;
+        }
+    public static void main(String[] args) throws IOException {
+        FastReader in = new FastReader();
+        int t = in.nextInt();
+        while (t-- > 0) {
+            solve(in);
+        }
+    }
+static void solve(FastReader in) throws IOException {
+        int n, k;
+        n = in.nextInt();
+        k = in.nextInt();
+        ArrayList<Integer> arr;
+        arr=read(n,in);
+        if(isSorted(arr) || k>=2) System.out.println("YES");
+        else System.out.println("NO");
+    }
