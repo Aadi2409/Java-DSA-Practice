@@ -6,19 +6,52 @@ public class Template {
     static final int mod = 998_244_353;
     static final int MAX = 1_000_015;
     static final long INF = (long) 9e18;
+    static Scanner sc = new Scanner(System.in);
 
+    // ------------------------- To read an Array ----------------------------
+    static ArrayList<Integer> read(int n,FastReader in) throws IOException {
+        ArrayList<Integer> temp = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            temp.add(in.nextInt());
+        }
+        return temp;
+    }
+    // ------------------------- isSorted Function ----------------------------
+    static boolean isSorted(ArrayList<Integer> arr){
+        for (int i=1;i<arr.size();i++)
+        {
+            if(arr.get(i) < arr.get(i - 1)) return false;
+        }
+        return true;
+    }
     public static void main(String[] args) throws IOException {
         FastReader in = new FastReader();
         int t = in.nextInt();
         while (t-- > 0) {
-            solve();
-
+            solve(in);
         }
     }
+    static void solve(FastReader in) throws IOException {
+            int n=in.nextInt();
+            String s=in.nextLine();
+            if(n==1)
+            {
+                if(s.charAt(0)=='.') System.out.println(1);
+                else System.out.println(0);
+                return;
+            }
+            int cnt=0;
+        for (int i = 1; i <= n-2; i++) {
+            if(s.charAt(i)==s.charAt(i+1) && s.charAt(i)==s.charAt(i-1) && s.charAt(i)=='.') {
+                System.out.println(2);
+                return;
+            }
+            if (s.charAt(i)=='.') cnt++;
 
-    static void solve() {
-        // TODO: Implement your problem logic here
-
+        }
+        if(s.charAt(0)=='.') cnt++;
+        if (s.charAt(n-1)=='.') cnt++;
+        System.out.println(cnt);
     }
 
     // ------------------------- Sieve of Eratosthenes ----------------------------
