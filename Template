@@ -32,6 +32,7 @@ public class Template {
         }
     }
     static void solve(FastReader in) throws IOException {
+<<<<<<< HEAD:CPTemplate/Template.java
             int n=in.nextInt();
             String s=in.nextLine();
             if(n==1)
@@ -52,6 +53,9 @@ public class Template {
         if(s.charAt(0)=='.') cnt++;
         if (s.charAt(n-1)=='.') cnt++;
         System.out.println(cnt);
+=======
+
+>>>>>>> fd10b78f5488fe60ffce6ff02a359ec4374d8f05:Template
     }
 
     // ------------------------- Sieve of Eratosthenes ----------------------------
