@@ -1,0 +1,24 @@
+https://codeforces.com/problemset/problem/1900/A
+
+static void solve(FastReader in) throws IOException {
+            int n=in.nextInt();
+            String s=in.nextLine();
+            if(n==1)
+            {
+                if(s.charAt(0)=='.') System.out.println(1);
+                else System.out.println(0);
+                return;
+            }
+            int cnt=0;
+        for (int i = 1; i <= n-2; i++) {
+            if(s.charAt(i)==s.charAt(i+1) && s.charAt(i)==s.charAt(i-1) && s.charAt(i)=='.') {
+                System.out.println(2);
+                return;
+            }
+            if (s.charAt(i)=='.') cnt++;
+
+        }
+        if(s.charAt(0)=='.') cnt++;
+        if (s.charAt(n-1)=='.') cnt++;
+        System.out.println(cnt);
+    }
