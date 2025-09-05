@@ -1,0 +1,15 @@
+https://codeforces.com/problemset/problem/1901/A
+
+static void solve(FastReader in) throws IOException {
+        int n, x;
+        n = in.nextInt();
+        x = in.nextInt();
+        ArrayList<Integer> arr;
+        arr=read(n,in);
+        int max= arr.get(0);
+        for (int i = 1; i <arr.size(); i++) {
+            max=Math.max(max,arr.get(i)-arr.get(i-1));
+        }
+        max=Math.max(max,(x- arr.getLast())*2);
+        System.out.println(max);
+    }
