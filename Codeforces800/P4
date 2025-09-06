@@ -1,0 +1,7 @@
+https://codeforces.com/problemset/problem/1899/A
+
+static void solve(FastReader in) throws IOException {
+        int n=in.nextInt();
+        if (n%3==2 || n%3==1) System.out.println("First");
+        else System.out.println("Second");
+    }w:
