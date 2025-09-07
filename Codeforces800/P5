@@ -1,0 +1,12 @@
+https://codeforces.com/problemset/problem/1896/A
+
+ static void solve(FastReader in) throws IOException {
+       int n=in.nextInt();
+       ArrayList<Integer> arr=new ArrayList<>();
+       arr=read(n,in);
+       if (isSorted(arr)) System.out.println("YES");
+       else if (arr.get(0)==1 && arr.get(n-1)!=1 && arr.get(0)!=n) {
+           System.out.println("YES");
+       }
+        else System.out.println("NO");
+    }
