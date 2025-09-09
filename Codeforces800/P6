@@ -1,0 +1,23 @@
+https://codeforces.com/problemset/problem/1881/A?locale=en
+
+int n=in.nextInt();
+        int m=in.nextInt();
+        StringBuilder x= new StringBuilder(in.nextLine());
+        String s=in.nextLine();
+        int ans=0;
+        int i=0;
+        while(i<=5)
+        {
+            if(x.toString().contains(s))
+            {
+                System.out.println(ans);
+                return;
+            }
+            else {
+                x.append(x);
+                ans++;
+            }
+            i++;
+        }
+        System.out.println(-1);
+    }
