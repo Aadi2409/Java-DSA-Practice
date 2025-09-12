@@ -1,0 +1,14 @@
+https://codeforces.com/problemset/problem/1878/A
+
+static void solve(FastReader in) throws IOException {
+        int n=in.nextInt();
+        int k=in.nextInt();
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr=read(n,in);
+        boolean flag=false;
+        for (Integer integer : arr) {
+            if (integer == k) flag=true;
+        }
+        if(flag) System.out.println("YES");
+        else System.out.println("NO");
+    }
