@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Trial {
+    public static void main(String[] args) {
+            int[] arr={1,2,3,4,5};
+            trianglesum(arr);
+    }
+
+    static void trianglesum(int[] arr)
+    {
+        if(arr.length<1) return;
+
+        int[] temp=new int[arr.length-1];
+
+        helper(temp,0,arr);
+
+        trianglesum(temp);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    static void helper(int[] temp,int index,int[] arr)
+    {
+        if(index==arr.length-1) return;
+        temp[index]=arr[index]+arr[index+1];
+        helper(temp,index+1,arr);
+    }
+}
+
+
