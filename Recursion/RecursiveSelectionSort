@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+            int[] arr={4,3,1,8,2};
+            RecSelectionSort(arr,0,arr.length-1,0);
+        System.out.println(Arrays.toString(arr));
+     }
+    public static void RecSelectionSort(int[] arr,int c,int r,int maxi) {
+       if(r==0) return;
+       if (c<=r)
+        {
+            if(arr[c]>arr[maxi])
+            {
+                maxi=c;
+            }
+           RecSelectionSort(arr,c+1,r,maxi);
+
+        }
+        else
+        {
+            int temp=arr[c-1];
+            arr[c-1]=arr[maxi];
+            arr[maxi]=temp;
+            RecSelectionSort(arr,0,r-1,0);
+        }
+    }
+}
+
+
