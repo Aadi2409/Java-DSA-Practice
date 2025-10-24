@@ -1,0 +1,41 @@
+import java.sql.*;
+
+public class JDBCDemo {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+        /*   import package
+             load and register
+             create connection
+             create statement
+             execute statement
+             process the results
+             close
+        */
+
+        String url="jdbc:postgresql://localhost:5432/postgres";
+        String uname="postgres";
+        String pass="0000";
+        String sql="select * from students";
+
+        Class.forName("org.postgresql.Driver"); //Loading and registering the package
+        Connection con = DriverManager.getConnection(url,uname,pass); //Creating the Connection
+        System.out.println("Connection Established");
+
+        Statement st =con.createStatement(); //Creating Statement
+        ResultSet rs=st.executeQuery(sql); //Executing Statement
+//        rs.next();  //Points to the next row and check if it has something
+//        String sname=rs.getString("name");
+//        System.out.println("The name fetched is " + sname); //Process The Result
+
+        while(rs.next())
+        {
+            System.out.print(rs.getInt(1)+" ");
+            System.out.print(rs.getString(2)+" ");
+            System.out.println(rs.getInt(3));
+        }
+        con.close(); //Connection Closed
+        System.out.println("Connection Closed");
+    }
+}
+
+We also need postgres jar file in the project structure so add if not there
