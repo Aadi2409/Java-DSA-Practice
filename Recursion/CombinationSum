@@ -1,0 +1,44 @@
+https://leetcode.com/problems/combination-sum/
+
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+        int[]candidates = {2,3,6,7};
+        int target = 7;
+        List<List<Integer>> result=combinationSum(candidates,target);
+        System.out.println(result);
+     }
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> final_ans = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        helper(candidates,target,0,final_ans,0,temp);
+        System.out.println(final_ans);
+        return final_ans;
+    }
+
+    public static void helper(int[] candidates, int target,int sum,List<List<Integer>> ans,int ind,List<Integer> temp)
+    {
+        if(sum==target)
+        {
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+        if(ind>candidates.length-1 || sum>target)
+        {
+            return;
+        }
+
+        sum+=candidates[ind];
+
+        temp.add(candidates[ind]);
+        helper(candidates,target,sum,ans,ind,temp);
+
+        temp.remove(temp.size()-1);
+        sum-=candidates[ind];
+        helper(candidates,target,sum,ans,ind+1,temp);
+
+    }
+}
+
+
