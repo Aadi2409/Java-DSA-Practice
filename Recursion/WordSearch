@@ -1,0 +1,63 @@
+https://leetcode.com/problems/word-search/description/
+
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+        String[][]board = {{"A","B","C","E"},{"S","F","C","S"},{"A","D","E","E"}};
+        String word = "SEE";
+        System.out.println(exist(board,word));
+     }
+    public static boolean exist(char[][] board, String word) {
+        int n=board.length;
+        int m=board[0].length;
+        int[][] vis= new int[n][m];
+        for (int i = 0; i <n ; i++) {
+            for (int j = 0; j < m; j++) {
+                if (board[i][j]==word.charAt(0))
+                {
+                    vis[i][j]=1;
+                    if(helper(board,word,vis,1,i,j)) return true;
+                }
+                vis[i][j]=0;
+            }
+        }
+        return false;
+    }
+
+    public static boolean helper(char[][] board, String word,int[][] vis,int ind,int row,int col)
+    {
+        if(ind==word.length())
+        {
+            return true;
+        }
+        if (row<0 || row> board.length || col<0 || col>board[0].length || vis[row][col]!=0)
+        {
+            return false;
+        }
+
+        int[] delrow={-1,0,1,0};
+        int[] delcol={0,1,0,-1};
+
+        for (int i=0;i<4;i++)
+        {
+            int nrow=row+delrow[i];
+            int ncol=col+delcol[i];
+
+            if (board[nrow][ncol]!=word.charAt(ind))
+            {
+                continue;
+            }
+            vis[nrow][ncol]=1;
+            if(helper(board,word,vis,ind+1,nrow,ncol))
+            {
+                return true;
+            }
+            vis[nrow][ncol]=0;
+        }
+        return false;
+    }
+
+}
+
+
