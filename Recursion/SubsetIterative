@@ -1,0 +1,29 @@
+finding all the subsets of the elements in the array without using recursion
+time complexity is (N * 2^n)
+space complexity is (N * 2^n)
+
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+    int[] arr={1,2,3};
+        System.out.println(iterativeSubset(arr));
+    }
+
+    public static List<List<Integer>> iterativeSubset (int[] arr)
+    {
+        List<List<Integer>> outer= new ArrayList<>();
+        outer.add(new ArrayList<>());
+        for (int nums: arr)
+        {
+            int n= outer.size();
+            for (int i = 0; i < n; i++) {
+                List<Integer> internal = new ArrayList<>(outer.get(i));
+                internal.add(nums);
+                outer.add(internal);
+            }
+        }
+
+        return outer;
+    }
+}
