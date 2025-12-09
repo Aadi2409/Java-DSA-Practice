@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+        System.out.println(diceWays("",4));
+    }
+
+    public static List<String> diceWays(String p, int target)
+    {
+        if(target==0)
+        {
+            List<String> temp = new ArrayList<>();
+            temp.add(p);
+            return temp;
+        }
+
+        List<String> ans= new ArrayList<>();
+        for (int i=1;i<=6 && i<=target;i++)
+        {
+            ans.addAll(diceWays(p+i,target-i));
+        }
+        return ans;
+    }
+
+}
