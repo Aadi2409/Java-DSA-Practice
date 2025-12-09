@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Trial {
+    public static void main(String[] args) {
+        String digits = "12";
+        System.out.println(letterCombinations(digits));
+    }
+    public static List<String> letterCombinations(String digits) {
+        HashMap<Character,String> map = new HashMap<>();
+        map.put('2',"abc");
+        map.put('3',"def");
+        map.put('4',"ghi");
+        map.put('5',"jkl");
+        map.put('6',"mno");
+        map.put('7',"pqrs");
+        map.put('8',"tuv");
+        map.put('9',"wxyz");
+
+        return helper("",digits, map);
+    }
+
+    public static List<String> helper(String p , String up, HashMap<Character,String> map)
+    {
+        if (up.isEmpty())
+        {
+            List<String> temp=new ArrayList<>();
+            temp.add(p);
+            return temp;
+        }
+
+        List<String> result=new ArrayList<>();
+        Character c=up.charAt(0);
+        String letters=map.get(c);
+        for(int i=0;i<letters.length();i++)
+        {
+            result.addAll(helper(p+letters.charAt(i),up.substring(1),map));
+        }
+        return result;
+    }
+
+}
